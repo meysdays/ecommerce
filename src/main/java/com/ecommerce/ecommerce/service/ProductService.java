@@ -71,4 +71,8 @@ public class ProductService {
         }
         return optionalProduct.get();
     }
+
+    public List<Product> getProductsCategory(Integer categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
 }

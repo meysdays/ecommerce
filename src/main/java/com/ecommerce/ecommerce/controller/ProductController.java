@@ -39,6 +39,12 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<List<Product>> getProductCategory(@PathVariable Integer categoryId){
+        List<Product> products = productService.getProductsCategory(categoryId);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     @PostMapping("/update/{productId}")
     public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productId") Integer productId, @RequestBody ProductDto productDto) throws Exception {
         Optional<Category> optionalCategory = categoryRepo.findById(productDto.getCategoryId());
